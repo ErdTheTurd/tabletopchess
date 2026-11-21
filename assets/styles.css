@@ -1,0 +1,482 @@
+/* Tabletop Chess marketing site — static, plain, product-studio. */
+
+:root {
+  --bg: #efe8dc;
+  --bg-elevated: #f6f1e8;
+  --ink: #241c14;
+  --muted: #5c5348;
+  --line: rgba(36, 28, 20, 0.12);
+  --accent: #3d5a45;
+  --accent-ink: #2c4533;
+  --panel: #fffcf7;
+  --max: 1040px;
+  --pad: clamp(1.25rem, 4vw, 2.5rem);
+  --radius: 1.1rem;
+  --font: "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 520px at 8% -10%, rgba(61, 90, 69, 0.10), transparent 55%),
+    radial-gradient(780px 480px at 96% 0%, rgba(196, 165, 116, 0.20), transparent 52%),
+    linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 42%, #e4dacb 100%);
+  background-attachment: fixed;
+  font: 17px/1.6 var(--font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a {
+  color: var(--accent-ink);
+  text-underline-offset: 0.16em;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+.skip:focus {
+  left: var(--pad);
+  top: 0.75rem;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--pad), var(--max));
+  margin-inline: auto;
+}
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg-elevated) 84%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  width: min(100% - 2 * var(--pad), var(--max));
+  margin-inline: auto;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.brand:hover {
+  color: var(--ink);
+}
+
+.brand-mark {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.4rem;
+}
+
+
+/* Hero */
+
+.hero {
+  padding: clamp(2.75rem, 8vw, 5rem) 0 clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.hero-inner {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.25rem);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .hero-inner {
+    grid-template-columns: 1.02fr 1.08fr;
+  }
+}
+
+.hero-copy {
+  animation: rise 650ms ease both;
+}
+
+.wordmark {
+  margin: 0 0 0.85rem;
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5.6vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.hero h1 {
+  margin: 0 0 1rem;
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 3.1vw, 1.8rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
+  max-width: 20ch;
+}
+
+.lede {
+  margin: 0 0 1.35rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 40ch;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.1rem;
+}
+
+.btn-soon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.78rem 1.15rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #f7f1e8;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.btn-soon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.device-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* Board illustration */
+
+.scene {
+  margin: 0;
+  animation: rise 750ms 80ms ease both;
+}
+
+.scene-frame {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 0.35rem);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 18px 40px rgba(36, 28, 20, 0.10);
+  overflow: hidden;
+}
+
+.scene-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hud {
+  position: absolute;
+  top: 4.5%;
+  right: 5%;
+  width: min(42%, 12.5rem);
+  padding: 0.65rem 0.7rem 0.7rem;
+  border-radius: 1.15rem;
+  background: rgba(252, 249, 243, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 10px 28px rgba(36, 28, 20, 0.16);
+  backdrop-filter: blur(18px) saturate(1.35);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  color: var(--ink);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.hud-grabber {
+  width: 2.1rem;
+  height: 0.28rem;
+  margin: 0 auto 0.5rem;
+  border-radius: 999px;
+  background: rgba(36, 28, 20, 0.22);
+}
+
+.hud-title {
+  margin: 0 0 0.55rem;
+  font-family: var(--display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.hud-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  margin-bottom: 0.5rem;
+}
+
+.hud-label {
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hud-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.seg {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.12rem;
+  padding: 0.12rem;
+  border-radius: 999px;
+  background: rgba(36, 28, 20, 0.08);
+}
+
+.seg span {
+  display: block;
+  text-align: center;
+  padding: 0.22rem 0.1rem;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.seg .on {
+  background: #fffcf7;
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(36, 28, 20, 0.12);
+}
+
+.hud-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+}
+
+.hud-btn {
+  display: block;
+  text-align: center;
+  padding: 0.38rem 0.2rem;
+  border-radius: 0.7rem;
+  background: rgba(36, 28, 20, 0.08);
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.scene figcaption,
+.scene-frame + figcaption,
+figure.scene > figcaption {
+  margin: 0.85rem 0 0;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Features */
+
+.features {
+  padding: 0 0 clamp(3rem, 7vw, 4.5rem);
+}
+
+.features-head {
+  margin: 0 0 1.5rem;
+  max-width: 34ch;
+}
+
+.features-head h2 {
+  margin: 0 0 0.45rem;
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 3vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.features-head p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.feature-list li {
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 0.25rem 1.5rem;
+}
+
+@media (min-width: 720px) {
+  .feature-list li {
+    grid-template-columns: 12rem 1fr;
+    align-items: baseline;
+  }
+}
+
+.feature-list h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.feature-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  max-width: 46ch;
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.5rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+.trademark {
+  max-width: 28ch;
+}
+
+@media (max-width: 620px) {
+  .hud {
+    top: 3.5%;
+    right: 3.5%;
+    width: min(48%, 10rem);
+    padding: 0.45rem 0.5rem 0.5rem;
+    border-radius: 0.95rem;
+    font-size: 0.64rem;
+  }
+
+  .hud-title {
+    font-size: 0.72rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .hud-label {
+    font-size: 0.54rem;
+  }
+
+  .seg span,
+  .hud-btn {
+    font-size: 0.56rem;
+  }
+
+  .hud-actions {
+    margin-top: 0.4rem;
+  }
+}
