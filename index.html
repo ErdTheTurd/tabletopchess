@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabletop Chess for Apple Vision Pro</title>
+<meta name="description" content="Tabletop Chess puts a 3D chess board on any real table. Play the computer or a friend on Apple Vision Pro.">
+<style>
+  :root{--bg:#14110f;--card:#1d1916;--ink:#f3ece2;--muted:#b6a996;--gold:#c9a46a;--line:#2e2822}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  header{padding:28px 0;display:flex;align-items:center;gap:12px;font-weight:600;letter-spacing:.02em}
+  header .mark{font-size:28px;color:var(--gold)}
+  .hero{padding:72px 0 64px;text-align:center}
+  .hero h1{font-family:"New York",Georgia,serif;font-weight:600;font-size:clamp(40px,7vw,72px);line-height:1.05;letter-spacing:-.01em}
+  .hero p{color:var(--muted);font-size:20px;max-width:620px;margin:20px auto 0}
+  .badge{display:inline-block;margin-top:32px;padding:10px 20px;border:1px solid var(--gold);border-radius:999px;color:var(--gold);font-size:15px}
+  .board{margin:56px auto 0;width:min(360px,80vw);aspect-ratio:1;display:grid;grid-template-columns:repeat(8,1fr);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 8px #3a2a1c;transform:perspective(900px) rotateX(38deg)}
+  .board i{display:block}
+  .board i.l{background:#e8d5b5}.board i.d{background:#8a5a36}
+  section.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;padding:40px 0 72px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15.5px}
+  footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><span class="mark">&#9822;</span> Tabletop Chess</header>
+  <section class="hero">
+    <h1>Chess on any table.</h1>
+    <p>A full 3D chess board that sits on the real table in front of you. Play the computer or a friend, right in your room, on Apple Vision Pro.</p>
+    <span class="badge">Coming soon to Apple Vision Pro</span>
+    <div class="board" id="board" aria-hidden="true"></div>
+  </section>
+  <section class="features">
+    <div class="card"><h3>On your real table</h3><p>The board anchors to a table in your room, so it feels like a set you could reach out and touch.</p></div>
+    <div class="card"><h3>Play the computer</h3><p>Pick a difficulty and play a built-in chess engine, from relaxed games to a real challenge.</p></div>
+    <div class="card"><h3>Play a friend</h3><p>Pass-and-play on one device for a game across the table with someone nearby.</p></div>
+    <div class="card"><h3>Natural controls</h3><p>Look at a piece and pinch to pick it up. Legal moves light up so every move is clear.</p></div>
+    <div class="card"><h3>Every rule</h3><p>Castling, en passant, promotion, check, checkmate, and stalemate, plus undo and new game.</p></div>
+    <div class="card"><h3>Works offline</h3><p>No internet needed to play. Games run entirely on your device.</p></div>
+  </section>
+  <footer>Tabletop Chess &middot; Apple Vision Pro is a trademark of Apple Inc.</footer>
+</div>
+<script>
+  const b=document.getElementById('board');
+  for(let r=0;r<8;r++)for(let c=0;c<8;c++){const i=document.createElement('i');i.className=(r+c)%2?'d':'l';b.appendChild(i);}
+</script>
+</body>
+</html>
